@@ -31,3 +31,5 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
 end
+
+ruby "2.3.3"
