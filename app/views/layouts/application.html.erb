@@ -10,8 +10,9 @@
 <body>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Bloccit", welcome_index_path %></li>
+      <li><%= link_to "Wikibloc", welcome_index_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
+      <li><%= link_to "Wikis", wikis_path %></li>
       <% if user_signed_in? %>
         <li style='float: right'><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
         <li style='float: right'><%= link_to 'Edit Profile', edit_user_registration_path %></li>
@@ -31,7 +32,7 @@
        <%= flash[:alert] %>
      </div>
    <% end %>
-    <%= yield %>
+  <%= yield %>
   </div>
 </body>
 </html>
