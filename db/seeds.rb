@@ -4,19 +4,20 @@ require 'random_data'
 # 5.times do
 #   User.create!(
 #   email:    RandomData.random_email,
-#   password: RandomData.random_sentence
+#   password: RandomData.random_sentence,
 #   )
 # end
-#
-# # Create custom user
-# User.create!(
-# email:    'seanmross9@gmail.com',
-# password: 'password',
-# password_confirmation: 'password',
-# confirmed_at: Time.at(0)
-# )
-#
-# users = User.all
+
+# Create custom user
+User.create!(
+email:    'seanmross9@gmail.com',
+password: 'password',
+password_confirmation: 'password',
+confirmed_at: Time.at(0),
+role: 'standard',
+)
+
+users = User.all
 
 
 # Create Wikis
@@ -31,5 +32,5 @@ wikis = Wiki.all
 
 # Output data summary
 puts "Seed finished"
-#puts "#{User.count} users created"
+puts "#{User.count} users created"
 puts "#{Wiki.count} wikis created"

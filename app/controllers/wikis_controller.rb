@@ -1,5 +1,5 @@
 class WikisController < ApplicationController
-  #before_action :authorize_user, except: [:index, :show]
+
   def index
     @wikis = Wiki.all
   end
@@ -14,7 +14,7 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new(wiki_params)
-
+    @wiki.user = current_user
     if @wiki.save
       redirect_to @wiki, notice: "Wiki was saved successfully."
     else
@@ -29,8 +29,8 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
-
-    if @wiki.update_attributes(wiki_params)
+    #authorize @wiki
+    if @wiki.update(wiki_params)
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki
     else
