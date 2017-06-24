@@ -1,6 +1,12 @@
-# for future implementation
-# class WikiPolicy < ApplicationPolicy
-#   def update?
-#     user.admin? or not record.private?
-#   end
-# end
+#for future implementation
+class WikiPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      if user.role == 'standard'
+        scope.where(private: false)
+      else
+        scope.all
+      end
+    end
+  end
+end

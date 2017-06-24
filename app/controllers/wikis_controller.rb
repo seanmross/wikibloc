@@ -1,7 +1,7 @@
 class WikisController < ApplicationController
-
+  after_action :verify_policy_scoped, only: :index
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
