@@ -1,4 +1,3 @@
-#for future implementation
 class WikiPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
