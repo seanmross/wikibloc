@@ -1,0 +1,25 @@
+<h2>Update Account Settings</h2>
+
+<h3>Wikibloc Premium</h3>
+<% if current_user.role == 'standard' %>
+  <span class="glyphicon glyphicon-credit-card" aria-hidden="true"></span>
+  <h4 style="display: inline-block">Sign up for Wikibloc Premium?</h4>
+  <p>Gain access to private wikis for just $15.00/month!</p>
+  <% #upgrade account %>
+  <%= form_for(@user, url: edit_user_account_path(@user), method: :patch) do |f| %>
+    <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+    <%= f.submit 'Change Role', :class => 'button-xs' %>
+  <% end %>
+
+<% else %>
+  <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+  <h4 style="display: inline-block">You are a Wikibloc Premium member.</h4>
+  <p>Downgrade to free subscription? Please be advised that if you downgrade to a standard account, any private wikis created using Wikibloc Premium will become public.</p>
+  <% #downgrade account %>
+
+  <%= form_for(@user, url: edit_user_account_path(@user), method: :patch) do |f| %>
+    <%= f.select(:role, User.roles.keys.map {|role| [role.titleize,role]}) %>
+    <%= f.submit 'Change Role', :class => 'button-xs' %>
+  <% end %>
+
+<% end %>

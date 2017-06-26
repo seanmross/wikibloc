@@ -12,21 +12,31 @@ end
 
 # Create custom admin user
 User.create!(
-email:    'seanmross9@gmail.com',
+email:    'admin@example.com',
 password: 'password',
 password_confirmation: 'password',
 confirmed_at: Time.at(0),
 role: 'admin',
 )
 
+# Create custom premium user
+User.create!(
+email:    'premium@example.com',
+password: 'password',
+password_confirmation: 'password',
+confirmed_at: Time.at(0),
+role: 'premium',
+)
+
 # Create custom standard user
 User.create!(
-email:    'sean@example.com',
+email:    'standard@example.com',
 password: 'password',
 password_confirmation: 'password',
 confirmed_at: Time.at(0),
 role: 'standard',
 )
+
 
 users = User.all
 

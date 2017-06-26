@@ -9,4 +9,9 @@ class User < ActiveRecord::Base
   after_initialize { self.role ||= :standard}
   enum role: [:standard, :premium, :admin]
 
+
+  def set_wikis_public
+    self.wikis.each { |wiki| wiki.update(private: false)}
+  end
+
 end
