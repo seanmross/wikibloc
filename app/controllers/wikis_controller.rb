@@ -10,12 +10,14 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    @collaborations = User.all - [current_user]
   end
 
   def create
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     if @wiki.save
+      new_collaboration
       redirect_to @wiki, notice: "Wiki was saved successfully."
     else
       flash.now[:alert] = "Error creating wiki. Please try again."
@@ -25,12 +27,13 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = Wiki.find(params[:id])
+    @collaborations = User.all - [@wiki.user]
   end
 
   def update
     @wiki = Wiki.find(params[:id])
-    #authorize @wiki
     if @wiki.update(wiki_params)
+      edit_collaboration
       flash[:notice] = "Wiki was updated."
       redirect_to @wiki
     else
@@ -55,6 +58,27 @@ class WikisController < ApplicationController
 
   def wiki_params
     params.require(:wiki).permit(:title, :body, :private)
+  end
+
+  def new_collaboration
+    params[:wiki][:user_ids].each do |user_id|
+      collaboration = Collaboration.new
+      collaboration.user_id = user_id
+      collaboration.wiki_id = Wiki.count
+      collaboration.save
+    end
+  end
+
+  def edit_collaboration
+    Collaboration.where(wiki_id: @wiki).each do |collaboration|
+      collaboration.destroy
+    end
+    params[:wiki][:user_ids].each do |user_id|
+      collaboration = Collaboration.new
+      collaboration.user_id = user_id
+      collaboration.wiki_id = Wiki.count
+      collaboration.save
+    end
   end
 
 end

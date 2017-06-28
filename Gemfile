@@ -23,6 +23,7 @@ gem 'devise'
 gem 'bootstrap-sass'
 gem 'pundit'
 gem 'redcarpet'
+gem 'simple_form'
 
 group :development, :test do
   gem 'byebug'
