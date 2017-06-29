@@ -1,4 +1,4 @@
-unless Rails.env.production? do
+unless Rails.env.production?
 
   require 'random_data'
 
