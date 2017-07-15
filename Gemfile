@@ -24,6 +24,7 @@ gem 'bootstrap-sass'
 gem 'pundit'
 gem 'redcarpet'
 gem 'simple_form'
+gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug'

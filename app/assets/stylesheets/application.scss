@@ -12,9 +12,12 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
+ *= require bootstrap
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 .user-info {
   position: relative;
@@ -25,4 +28,43 @@
 .glyphicon {
   display: inline-block;
   margin-right: 5px;
+}
+
+html {
+  background: url(bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+body {
+  margin-bottom: 100px;
+}
+
+a{color:#0088cc;}
+a:hover{text-decoration: none;}
+
+h1,h2,h3,h4,h5,h6{ font-family:'Source Sans Pro', sans-serif}
+
+h1{font-size:50px; font-weight: 200}
+h2{font-size: 30px; font-weight: 300; margin-bottom: 50px}
+h3{font-size: 20px; font-weight: 400}
+h4{font-size:18px; font-weight: 400}
+
+p{font-weight: 400;}
+
+/*Feature
+==========================*/
+.feature-box{
+	margin-top: 60px;
+	text-align: center;
+}
+
+.service-item {
+  margin-bottom: 50px;
+}
+
+.footer {
+  margin-bottom: 25px;
 }
